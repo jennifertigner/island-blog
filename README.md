@@ -16,8 +16,7 @@ pip install -r requirements.txt
 ###Set up the Database
 ```bash
 python manage.py migrate
-python manage.py migrate kepler_exoplanets
-./manage.py generate_data
+python manage.py migrate blog
 ```
 
 To run the server, type the following into your terminal:
