@@ -5,6 +5,9 @@ from .models import Article, Comment, Tag, Image
 def index(request):
   return render(request, 'homepage/index.html')
 
+def browse_tag_list(request): 
+  return render(request, 'browse/tag_list.html')
+
 def browse(request, tag_id):
   return render(request, 'browse/browse.html')
 
@@ -14,11 +17,8 @@ def about(request):
 def contact(request):
   return render(request, 'contact/contact.html')
 
-def articles(request, article_id):
+def article(request, article_id):
   return render(request, 'article/article.html')
-
-def comments(request, comment_id): 
-  return render(request, 'comment/comment.html')
 
 
 # def error404(request):

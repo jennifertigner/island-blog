@@ -5,16 +5,16 @@ from . import views
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
-  # ex: /index
+  # this is the homepage (localhost:8000)
   url(r'^$', views.index, name='index'),
-  # ex: /index
-  url(r'^articles/$', RedirectView.as_view(url='views.index', permanent=False), name='index'),
+  # these redirect to the homepage
+  url(r'^article/$', RedirectView.as_view(pattern_name='index')),
+  url(r'^index/$', RedirectView.as_view(pattern_name='index')),
+  url(r'^home/$', RedirectView.as_view(pattern_name='index')),
   # ex: /articles/5
-  url(r'^articles/(?P<article_id>[0-9]+)/$', views.articles, name='articles'),
-  # ex: /articles/5/comment
-  url(r'^articles/(?P<article_id>[0-9]+)/comment/$', views.comments, name='comments'),
+  url(r'^article/(?P<article_id>[0-9]+)/$', views.article, name='article'),
   # ex: /browse
-  url(r'^browse/$', views.browse, name='browse'), 
+  url(r'^browse/$', views.browse_tag_list, name='browse_tag_list'), 
   # ex: /browse/beach
   url(r'^browse/(?P<tag_id>[a-zA-Z]+)/$', views.browse, name='browse'), 
   # ex: /about
