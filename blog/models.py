@@ -3,11 +3,11 @@ from django.db import models
 class Article(models.Model):
   title = models.CharField(max_length=500)
   summary = models.CharField(max_length=1000)
-  article_text = TextField(null=True)
+  article_text = models.TextField(null=True)
   comment_count = models.IntegerField(default=0)
   image_count = models.IntegerField(default=0)
   tag_count = models.IntegerField(default=0)
-  tags = models.ManyToMany('Tag')
+  tags = models.ManyToManyField('Tag')
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
 
   def __str__(self): 
@@ -25,13 +25,13 @@ class Comment(models.Model):
 
 class Tag(models.Model):
   tag_text = models.CharField(max_length=100)
-  articles = models.ManyToMany('Article')
+  articles = models.ManyToManyField('Article')
 
   def __str__(self): 
     return self.tag_text
 
 class Image(models.Model):
-  filepath = ImageField(upload_to='static/images', max_length=100)
+  filepath = models.ImageField(upload_to='static/images', max_length=100)
   description = models.CharField(max_length=1000)
   article = models.ForeignKey('Article', on_delete=models.CASCADE)
 

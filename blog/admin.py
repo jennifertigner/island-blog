@@ -1,7 +1,7 @@
-dmimport models
+from .models import Article, Comment, Tag, Image
 from django.contrib import admin
 
-admin.site.register(models.Article)
-admin.site.register(models.Comment)
-admin.site.register(models.Tag)
-admin.site.register(models.Image)
+admin.site.register(Article)
+admin.site.register(Comment)
+admin.site.register(Tag)
+admin.site.register(Image)
