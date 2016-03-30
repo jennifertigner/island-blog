@@ -9,6 +9,8 @@ class Article(models.Model):
   tag_count = models.IntegerField(default=0)
   tags = models.ManyToManyField('Tag')
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
+  latitude = models.FloatField(default=48.4692338)
+  longitude = models.FloatField(default=-123.3698813)
 
   def __str__(self): 
     return self.title
