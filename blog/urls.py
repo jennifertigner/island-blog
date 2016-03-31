@@ -21,6 +21,8 @@ urlpatterns = [
   url(r'^about/$', views.about, name='about'), 
   # ex: /contact
   url(r'^contact/$', views.contact, name='contact'),
-  # url(r'404/$', views.error404),
-  # url(r'500/$', views.error500)
+  # page not found error
+  url(r'404/$', views.error404),
+  # server error
+  url(r'500/$', views.error500)
 ]
