@@ -1,6 +1,13 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-THIS IS ARTICLE.HTML
+<p>Title: {{ article.title }}</p>
+<p>Summary: {{ article.summary }}</p>
+<p>Tags: {{ article.tags }}</p>
+<p>Article text: {{ article.article_text }}</p>
+<p>Date: {{ article.date_posted}}</p>
+<p>Comment count: {{ article.comment_count }}</p>
+<p>Image description: {{ article.image_description }}</p>
+<p>Image: {{ article.image }}</p>
 
 {% endblock %}

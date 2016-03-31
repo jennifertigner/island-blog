@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-This will be a page which will show all the articles of that tag (filtered)
+<p>The current word is: {{ browse.tag_text }}</p>
+<p>The articles with this word are:  {{ browse.articles }}</p>
 
 {% endblock %}

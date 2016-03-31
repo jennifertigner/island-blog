@@ -16,7 +16,7 @@ urlpatterns = [
   # ex: /browse
   url(r'^browse/$', views.browse_tag_list, name='browse_tag_list'), 
   # ex: /browse/beach
-  url(r'^browse/(?P<tag_id>[a-zA-Z]+)/$', views.browse, name='browse'), 
+  url(r'^browse/(?P<tag_word>[a-zA-Z]+)/$', views.browse, name='browse'), 
   # ex: /about
   url(r'^about/$', views.about, name='about'), 
   # ex: /contact

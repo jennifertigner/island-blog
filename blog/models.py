@@ -7,7 +7,7 @@ class Article(models.Model):
   comment_count = models.IntegerField(default=0)
   image_count = models.IntegerField(default=0)
   tag_count = models.IntegerField(default=0)
-  tags = models.ManyToManyField('Tag')
+  tags = models.ManyToManyField('Tag', blank=True)
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
   latitude = models.FloatField(default=48.4692338)
   longitude = models.FloatField(default=-123.3698813)
@@ -27,7 +27,7 @@ class Comment(models.Model):
 
 class Tag(models.Model):
   tag_text = models.CharField(max_length=100)
-  articles = models.ManyToManyField('Article')
+  articles = models.ManyToManyField('Article', blank=True)
 
   def __str__(self): 
     return self.tag_text
