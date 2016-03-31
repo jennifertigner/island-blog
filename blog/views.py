@@ -8,7 +8,7 @@ def index(request):
 
 def browse_tag_list(request): 
   tag_list = []
-  tags = Tag.objects.all().order_by('tag_text')
+  tags = Tag.objects.all()
   for tag in tags:
     word = tag.tag_text
     tag_list.append(word)
@@ -17,12 +17,16 @@ def browse_tag_list(request):
   });
 
 def browse(request, tag_word):
-  tag = Tag.objects.get(tag_text=tag_word)
-  articles = Article.objects.get(tags=tag)
-  tag_text = tag.tag_text
+  # tag = Tag.objects.get(tag_text=tag_word)
+  # tag_text = tag.tag_text
+  # articles = tag.articles
+  # tag_text = tag_word
+  articles = Article.objects.all()
+  filtered_articles = articles.filter(tags=tag_word)
   return render(request, 'browse/browse.html', {
-    'articles': articles,
-    'tag_text': tag_text
+    # 'tag_text': tag_word, 
+    # 'filtered_articles': filtered_articles
+    'articles': articles
   });
 
 def about(request):

@@ -32,7 +32,7 @@ class Comment(models.Model):
     ordering = ['article', 'date_posted']
 
 class Tag(models.Model):
-  tag_text = models.CharField(max_length=100, name='word')
+  tag_text = models.CharField(max_length=100)
 
   def __str__(self): 
     return self.tag_text
