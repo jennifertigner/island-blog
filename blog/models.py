@@ -6,14 +6,17 @@ class Article(models.Model):
   article_text = models.TextField(null=True)
   comment_count = models.IntegerField(default=0)
   image_count = models.IntegerField(default=0)
-  tag_count = models.IntegerField(default=0)
   tags = models.ManyToManyField('Tag', blank=True)
+  tag_count = models.IntegerField(default=0)
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
   latitude = models.FloatField(default=48.4692338)
   longitude = models.FloatField(default=-123.3698813)
 
   def __str__(self): 
     return self.title
+
+  class Meta:
+    ordering = ['date_posted']
 
 class Comment(models.Model):
   name = models.CharField(max_length=100)
@@ -25,12 +28,17 @@ class Comment(models.Model):
   def __str__(self): 
     return self.comment_text
 
+  class Meta:
+    ordering = ['article', 'date_posted']
+
 class Tag(models.Model):
-  tag_text = models.CharField(max_length=100)
-  articles = models.ManyToManyField('Article', blank=True)
+  tag_text = models.CharField(max_length=100, name='word')
 
   def __str__(self): 
     return self.tag_text
+
+  class Meta: 
+    ordering = ['tag_text']
 
 class Image(models.Model):
   filepath = models.ImageField(upload_to='static/images', max_length=100)
