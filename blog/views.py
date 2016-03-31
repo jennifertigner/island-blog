@@ -7,26 +7,21 @@ def index(request):
   return render(request, 'main/index.html')
 
 def browse_tag_list(request): 
-  tag_list = []
+  list = []
   tags = Tag.objects.all()
   for tag in tags:
     word = tag.tag_text
-    tag_list.append(word)
+    list.append(word)
   return render(request, 'browse/tag_list.html', {
-    'tag_list': tag_list
+    'list': list
   });
 
 def browse(request, tag_word):
-  # tag = Tag.objects.get(tag_text=tag_word)
-  # tag_text = tag.tag_text
-  # articles = tag.articles
-  # tag_text = tag_word
-  articles = Article.objects.all()
-  filtered_articles = articles.filter(tags=tag_word)
+  word = Tag.objects.get(tag_text=tag_word)
+  article_list = word.article_set.all()
   return render(request, 'browse/browse.html', {
-    # 'tag_text': tag_word, 
-    # 'filtered_articles': filtered_articles
-    'articles': articles
+    'word': word, 
+    'article_list': article_list
   });
 
 def about(request):
