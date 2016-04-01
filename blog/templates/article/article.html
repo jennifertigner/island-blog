@@ -20,6 +20,7 @@
 <p>Date: {{ article.date_posted}}</p>
 
 <p>Image description: {{ image.description }}</p>
+{{image.filepath}}
 {% static "{{ image.filepath }}" as photo %}
 <p>Image:<br><img src="{{ photo }}" alt="{{ image.description }}"/></p>
 

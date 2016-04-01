@@ -42,6 +42,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -83,4 +85,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# MEDIA_ROOT = '/Users/jennifertigner/Documents/Programming/Job_Hunting/chatterblock/jenn_blog/blog/static/'
+# MEDIA_URL = 'http://127.0.0.1:8000/article/(?P<article_id>[0-9]+)/'
 STATIC_URL = '/static/'
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+# STATICFILES_DIRS = [
+#     "/Users/jennifertigner/Documents/Programming/Job_Hunting/chatterblock/jenn_blog/blog/static/"
+# ]

@@ -1,6 +1,8 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
+from django.conf.urls.static import static
+from django.conf import settings
 from . import views
 
 urlpatterns = [
@@ -24,5 +26,8 @@ urlpatterns = [
   # page not found error
   url(r'404/$', views.error404),
   # server error
-  url(r'500/$', views.error500)
-]
+  url(r'500/$', views.error500),     
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
