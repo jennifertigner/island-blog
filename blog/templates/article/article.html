@@ -26,7 +26,9 @@
 <p>Date: {{ article.date_posted }}</p>
 
 <p>Image description: {{ image.description }}</p>
-{{image.filepath.url}}
+
+Filepath: {{image.filepath}}<br>
+Filepath.url: {{image.filepath.url}}
 <!-- {% static "{{ image.filepath }}" as photo %} -->
 <p>Image:<br><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 

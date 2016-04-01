@@ -27,7 +27,4 @@ urlpatterns = [
   url(r'404/$', views.error404),
   # server error
   url(r'500/$', views.error500),     
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
