@@ -85,10 +85,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-# MEDIA_ROOT = '/Users/jennifertigner/Documents/Programming/Job_Hunting/chatterblock/jenn_blog/blog/static/'
-# MEDIA_URL = 'http://127.0.0.1:8000/article/(?P<article_id>[0-9]+)/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'media/')
+
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'/static/')
+
+MEDIA_URL = 'media/'
+
 STATIC_URL = '/static/'
-# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-# STATICFILES_DIRS = [
-#     "/Users/jennifertigner/Documents/Programming/Job_Hunting/chatterblock/jenn_blog/blog/static/"
-# ]

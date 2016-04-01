@@ -15,21 +15,19 @@
 
 <p>Article text: {{ article.article_text }}<br></p>
 
-<!-- Can I pass the article id into comment.html? -->
-
-<p>Comments:
+<!-- <p>Comments:
   <ul>
   {% for item in article.comments %}
     <li>{% include 'comment/comment.html' %}</li><br>
   {% endfor %}
   </ul>
 </p>
-
+ -->
 <p>Date: {{ article.date_posted}}</p>
 
 <p>Image description: {{ image.description }}</p>
 {{image.filepath}}
-{% static "{{ image.filepath }}" as photo %}
-<p>Image:<br><img src="{{ photo }}" alt="{{ image.description }}"/></p>
+<!-- {% static "{{ image.filepath }}" as photo %} -->
+<p>Image:<br><img src="media/{{ image.filepath }}" alt="{{ image.description }}"/></p>
 
 {% endblock %}
