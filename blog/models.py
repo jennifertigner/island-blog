@@ -38,7 +38,7 @@ class Tag(models.Model):
     ordering = ['tag_text']
 
 class Image(models.Model):
-  filepath = models.ImageField(upload_to='images/', max_length=100)
+  filepath = models.ImageField(max_length=100)
   description = models.CharField(max_length=1000)
   article = models.ForeignKey('Article', on_delete=models.CASCADE)
 

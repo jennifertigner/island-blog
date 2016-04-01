@@ -23,11 +23,11 @@
   </ul>
 </p>
  -->
-<p>Date: {{ article.date_posted}}</p>
+<p>Date: {{ article.date_posted }}</p>
 
 <p>Image description: {{ image.description }}</p>
-{{image.filepath}}
+{{image.filepath.url}}
 <!-- {% static "{{ image.filepath }}" as photo %} -->
-<p>Image:<br><img src="media/{{ image.filepath }}" alt="{{ image.description }}"/></p>
+<p>Image:<br><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 
 {% endblock %}
