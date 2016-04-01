@@ -9,11 +9,11 @@ def about(request):
 def article(request, article_id):
   article = Article.objects.get(pk=article_id)
   image = Image.objects.get(article=article_id)
-  # comments = Comment.objects.get(article=article_id)
+  comments = Comment.objects.get(article=article_id).order_by('-date_posted')
   return render(request, 'article/article.html', {
     'article': article,  
-    'image': image
-    # 'comments': comments
+    'image': image,
+    'comments': comments
   })
 
 def browse(request, tag_word):
@@ -28,21 +28,6 @@ def browse_tag_list(request):
   tags = Tag.objects.all()
   return render(request, 'browse/tag_list.html', {
     'tags': tags
-  })
-
-# WHAT IS THE PROBLEM HERE??? IT RETURNS 3 WHICH GIVES THE ERROR 'RETURNED MORE THAN ONE COMMENT'
-# IS THIS ERROR GOING TO REPLICATE FOR IMAGES?
-# WHY IS THERE NO ERROR FOR TAGS
-def comment(request, article_id=1): 
-  article = Article.objects.get(pk=article_id)
-  comments = article.comment_set.objects.all()
-
-  # comment_list = ["stuff"]
-  # for remark in comment:
-  #   comment_list.append(remark)
-  return render(request, 'comment/comment.html', {
-    'comments': comments,
-    # 'comment_list': comment_list
   })
 
 def contact(request):

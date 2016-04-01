@@ -15,7 +15,15 @@
 
 <p>Article text: {{ article.article_text }}<br></p>
 
-{% include 'comment/comment.html' %}
+<!-- Can I pass the article id into comment.html? -->
+
+<p>Comments:
+  <ul>
+  {% for item in article.comments %}
+    <li>{% include 'comment/comment.html' %}</li><br>
+  {% endfor %}
+  </ul>
+</p>
 
 <p>Date: {{ article.date_posted}}</p>
 
