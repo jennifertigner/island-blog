@@ -9,11 +9,11 @@ def about(request):
 def article(request, article_id):
   article = Article.objects.get(pk=article_id)
   image = Image.objects.get(article=article_id)
-  # comments = Comment.objects.get(article=article_id).order_by('-date_posted')
+  comments = Comment.objects.filter(article=article_id).order_by('-date_posted')
   return render(request, 'article/article.html', {
     'article': article,  
     'image': image,
-    # 'comments': comments
+    'comments': comments
   })
 
 def browse(request, tag_word):

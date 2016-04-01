@@ -15,21 +15,21 @@
 
 <p>Article text: {{ article.article_text }}<br></p>
 
-<!-- <p>Comments:
-  <ul>
-  {% for item in article.comments %}
-    <li>{% include 'comment/comment.html' %}</li><br>
+<p>Comments:
+  {% for item in comments.all %}
+    <div id="light-green">
+      <p>Name: {{ item.name }}</p>
+      <p>Email: {{ item.comment_text }}</p>
+      <p>Comment: {{ item.comment_text }}
+      <p>Date posted: {{ item.date_posted }}</p>
+    </div>
   {% endfor %}
-  </ul>
 </p>
- -->
+
 <p>Date: {{ article.date_posted }}</p>
 
 <p>Image description: {{ image.description }}</p>
-
-Filepath: {{image.filepath}}<br>
-Filepath.url: {{image.filepath.url}}
-<!-- {% static "{{ image.filepath }}" as photo %} -->
+ar
 <p>Image:<br><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 
 {% endblock %}
