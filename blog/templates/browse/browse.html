@@ -1,7 +1,13 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-<p>The current word is: {{ browse.word }}</p>
-<p>The articles with this word are:  {{ browse.article_list }}</p>
+<p>The current word is: {{ tag.tag_text }}</p>
+<p>The articles with this word are:  
+
+  <ul>
+  {% for article in tag.article_set.all %}
+    <li>{{ article.title }}</li>
+  {% endfor %}
+  </ul>
 
 {% endblock %}

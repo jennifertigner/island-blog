@@ -1,6 +1,12 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-<p>Here ye shall see a list of tags (ie. categories): {{ browse_tag_list.list }}</p>
+<p>Here ye shall see a list of tags (ie. categories):</p>
+
+<ul>
+{% for tag in tags %}
+  <li>{{ tag.tag_text }}</li>
+{% endfor %}
+</ul>
 
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-THIS IS COMMENT.HTML
+<div id="light-green">Comments:
+
+  <ul>
+  {% for item in comments.items %}
+    <li>{{ item.comment_text }}</li>
+  {% endfor %}
+  </ul>
+</div>
 
 {% endblock %}

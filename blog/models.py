@@ -4,10 +4,7 @@ class Article(models.Model):
   title = models.CharField(max_length=500)
   summary = models.CharField(max_length=1000)
   article_text = models.TextField(null=True)
-  comment_count = models.IntegerField(default=0)
-  image_count = models.IntegerField(default=0)
   tags = models.ManyToManyField('Tag', blank=True)
-  tag_count = models.IntegerField(default=0)
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
   latitude = models.FloatField(default=48.4692338)
   longitude = models.FloatField(default=-123.3698813)
@@ -41,7 +38,7 @@ class Tag(models.Model):
     ordering = ['tag_text']
 
 class Image(models.Model):
-  filepath = models.ImageField(upload_to='static/images', max_length=100)
+  filepath = models.ImageField(upload_to='images/', max_length=100)
   description = models.CharField(max_length=1000)
   article = models.ForeignKey('Article', on_delete=models.CASCADE)
 

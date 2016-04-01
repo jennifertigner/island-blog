@@ -1,13 +1,26 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load static from staticfiles %}
 
 <p>Title: {{ article.title }}</p>
 <p>Summary: {{ article.summary }}</p>
-<p>Tags: {{ article.tags }}</p>
-<p>Article text: {{ article.article_text }}</p>
+
+<p>Tags:
+  <ul>
+  {% for tag in article.tags.all %}
+    <li>{{ tag.tag_text }}</li>
+  {% endfor %}
+  </ul>
+</p>
+
+<p>Article text: {{ article.article_text }}<br></p>
+
+{% include 'comment/comment.html' %}
+
 <p>Date: {{ article.date_posted}}</p>
-<p>Comment count: {{ article.comment_count }}</p>
-<p>Image description: {{ article.image_description }}</p>
-<p>Image: {{ article.image }}</p>
+
+<p>Image description: {{ image.description }}</p>
+{% static "{{ image.filepath }}" as photo %}
+<p>Image:<br><img src="{{ photo }}" alt="{{ image.description }}"/></p>
 
 {% endblock %}
