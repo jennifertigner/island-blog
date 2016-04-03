@@ -3,34 +3,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
+    <title>Jenn's Little Island Blog</title>
     <!-- jQuery widgets css -->
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
-
     <!-- my local css file -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
     <!-- jQuery js -->
     <script src="{% static 'js/jquery-2.2.2.min.js' %}"></script>
-
     <!-- jQuery widgets js-->
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-
-    <!-- Bootstrap js -->
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-
-    <title>Jenn's Little Island Blog</title>
   </head>
   <body>
-<!--  Every page will have: 
-      - logo at top
-      - nav bar 
-      - footer
-      - sidebar to the right -->
-      {% block content %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
   </body>
 </html>

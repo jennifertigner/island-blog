@@ -10,3 +10,33 @@ body {
 #light-green {
   background-color: lightgreen;
 }
+
+#blog-name {
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  border: 1px solid black;
+}
+
+#menu-bar {
+  display: block;
+}
+
+#main-area {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10%;
+  position: absolute;
+  left: 0%;
+  width: 75%;
+}
+
+#right-sidebar {
+  display: inline-block;
+  border: 1px solid black;
+  /*padding: 7%;*/
+  position: absolute;
+  right: 0%;
+  width: 25%;
+}
