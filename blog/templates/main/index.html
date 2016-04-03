@@ -1,44 +1,5 @@
 {% extends 'main/base.html' %}
 {% block content %}
-{% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% bootstrap_messages %}
 
-<div id='blog-name'>Jenn's Little Island Blog</div>
-
-<nav class="navbar navbar-default" id="menu-bar">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Beach</a></li>
-            <li><a href="#">Sidney</a></li>
-            <li><a href="#">Wineries</a></li>
-            <li><a href="#">These can be created in a loop or something</a></li>
-          </ul>
-        </li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-  <!-- Submit form -->
-
-<div id="main-area">This will have the main articles</div>
-<div id="right-sidebar">
-  This is the right sidebar<br>
-  <form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
-
+<!-- have article preview page here -->
 {% endblock %}

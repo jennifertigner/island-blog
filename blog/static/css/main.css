@@ -11,6 +11,7 @@ body {
   background-color: lightgreen;
 }
 
+/* HEADER: BLOG NAME AND NAV BAR */
 #blog-name {
   display: block;
   margin: auto;
@@ -21,6 +22,8 @@ body {
 
 #menu-bar {
   display: block;
+  margin: auto;
+  float: none;
 }
 
 #main-area {
@@ -35,7 +38,6 @@ body {
 #right-sidebar {
   display: inline-block;
   border: 1px solid black;
-  /*padding: 7%;*/
   position: absolute;
   right: 0%;
   width: 25%;

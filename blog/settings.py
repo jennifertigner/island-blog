@@ -95,3 +95,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'static')
 
 STATIC_URL = '/static/'
 
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}

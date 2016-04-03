@@ -1,20 +1,55 @@
 {% load static %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 <!DOCTYPE html>
 <html>
   <head>
     <title>Jenn's Little Island Blog</title>
-    <!-- jQuery widgets css -->
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
-    <!-- my local css file -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <!-- jQuery js -->
-    <script src="{% static 'js/jquery-2.2.2.min.js' %}"></script>
-    <!-- jQuery widgets js-->
-    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
   </head>
   <body>
-    {% block content %}
-    {% endblock %}
+    <!-- TITLE ABOVE NAVIGATION BAR -->
+    <div id='blog-name'>Jenn's Little Island Blog</div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-default" id="menu-bar">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Beach</a></li>
+                <li><a href="#">Sidney</a></li>
+                <li><a href="#">Wineries</a></li>
+                <li><a href="#">These can be created in a loop or something</a></li>
+              </ul>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN AREA OF WEBSITE: ONLY THIS AREA WILL CHANGE FROM PAGE-TO-PAGE -->
+    <div id="main-area">
+      This will have the main articles
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <!-- RIGHT SIDEBAR WITH SEARCH AND SUBSCRIBE OPTIONS -->
+    <div id="right-sidebar">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
