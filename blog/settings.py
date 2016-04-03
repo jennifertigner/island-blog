@@ -17,7 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog', 
+    'django_cleanup',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -92,3 +93,4 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'static')
 
 STATIC_URL = '/static/'
+
