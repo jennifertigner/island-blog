@@ -11,14 +11,14 @@
   </head>
   <body>
     <!-- TITLE ABOVE NAVIGATION BAR -->
-    <div id='blog-name'>Jenn's Little Island Blog</div>
+    <div id='blog-name'><a href="{% url 'index' %}">Jenn's Little Island Blog</a></div>
 
     <!-- NAVIGATION BAR -->
     <nav class="navbar navbar-default" id="menu-bar">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -28,8 +28,8 @@
                 <li><a href="#">These can be created in a loop or something</a></li>
               </ul>
             </li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -37,7 +37,6 @@
 
     <!-- MAIN AREA OF WEBSITE: ONLY THIS AREA WILL CHANGE FROM PAGE-TO-PAGE -->
     <div id="main-area">
-      This will have the main articles
       {% block content %}
       {% endblock %}
     </div>
