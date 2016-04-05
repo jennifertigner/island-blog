@@ -4,14 +4,6 @@
 {% bootstrap_javascript %}
 <!-- {% load app_filters %} -->
 
-<!-- 
-SECTIONS: 
-- blog title
-- nav bar
-- main section
-- right sidebar
-- footer -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,7 +48,7 @@ SECTIONS:
     <!-- RIGHT SIDEBAR WITH SEARCH AND SUBSCRIBE OPTIONS -->
     <div id="right-sidebar">
 
-      <!-- SEARCH BAR -->
+      <!-- search bar -->
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -64,13 +56,13 @@ SECTIONS:
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       
-      <!-- PHOTO AND WELCOME TEXT -->
+      <!-- photo and welcome text -->
       <div id="mini-photo"></div>
       <div> 
         <p>Welcome to Vancouver Island!<br><span id="read-more"><a href="{% url 'about' %}">Read More</a></span></p>
       </div>
 
-      <!-- SUBSCRIBE TO MY BLOG -->
+      <!-- subscribe to my blog -->
       <div><p>Love my blog? Subscribe below to receive regular posts!</p></div>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">

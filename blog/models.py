@@ -13,7 +13,7 @@ class Article(models.Model):
     return self.title
 
   class Meta:
-    ordering = ['date_posted']
+    ordering = ['-date_posted']
 
 class Comment(models.Model):
   name = models.CharField(max_length=100)
