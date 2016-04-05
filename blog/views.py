@@ -30,11 +30,11 @@ def contact(request):
 def index(request):
   all_articles = Article.objects.all()
   all_comments = Comment.objects.all()
-  # all_images = Image.objects.all()
+  all_images = Image.objects.all()
   return render(request, 'main/index.html', {
     'all_articles': all_articles,
     'all_comments': all_comments, 
-    # 'all_images': all_images
+    'all_images': all_images
   })
 
 def error404(request):

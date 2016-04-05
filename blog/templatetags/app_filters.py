@@ -6,6 +6,6 @@ register = template.Library()
 def get_number_comments(articleID):
     num_comments = 0
     for comment in all_comments:
-        if comment.article == articleID:
+        if comment.article.id == articleID:
             num_comments += 1
     return num_comments

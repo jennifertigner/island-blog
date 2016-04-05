@@ -117,7 +117,9 @@ img {
 }
 
 #preview-img {
-  width: 15vw;
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 20vw;
 }
 
 /* FOR COMMENTS */
