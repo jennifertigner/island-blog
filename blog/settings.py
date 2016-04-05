@@ -82,19 +82,22 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Canada/Pacific'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'media')
-
 MEDIA_URL = '/media/'
-
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'static')
-
 STATIC_URL = '/static/'
 
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
+
+# Outputs 'email' to console for the contact page form
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+DEFAULT_FROM_EMAIL = 'jennifertigner@gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False 
+EMAIL_PORT = 1025

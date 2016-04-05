@@ -88,12 +88,13 @@ body {
   width: 100%;
 }
 
-/* ABOUT ME PAGE */
+/* ABOUT ME AND CONTACT PAGES */
 
 #profile-full {
   border: 1px solid black;
   border-radius: 10%;
-  height: 35vw;
+  height: 40vw;
+  width: 30vw;
   position: relative;
   top: 0;
 }
@@ -105,6 +106,11 @@ body {
   text-align: justify;
   vertical-align: top;
   width: 30vw;
+}
+
+#contact-greeting {
+  padding: 5%;
+  padding-top: 0%
 }
 
 /*#article-preview {
@@ -126,3 +132,4 @@ img {
 #light-green {
   background-color: lightgreen;
 }
+

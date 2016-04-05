@@ -1,6 +1,37 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-THIS IS CONTACT.HTML. I'm thinking of having a Bootstrap form here where anyone can send me a message
+<div id="contact-greeting">
+  <p>If you have any questions or comments, or if you just feel like saying hello, send me a message. I'd love to hear from you!</p>
+</div>
+
+<div id="contact-form">
+  <form role="form" action="" method="post">
+    {% csrf_token %}
+
+    <!-- NAME -->
+    <div class="form-group row col-md-offset-2">
+      <label class="col-sm-2 form-control-label">Name</label>
+      <div class="col-sm-6">{{ form.contact_name }}</div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-group row col-md-offset-2">
+      <label class="col-sm-2 form-control-label">Email Address</label>
+      <div class="col-sm-6">{{ form.contact_email }}</div>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="form-group row col-md-offset-2">
+      <label class="col-sm-2 form-control-label">Message</label>
+      <div class="col-sm-6">{{ form.content }}</div>
+    </div> 
+
+    <!-- SUBMIT BUTTON -->
+    <div class="form-group row col-md-offset-4">
+      <input class="col-sm-2 button btn-default" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
 
 {% endblock %}
