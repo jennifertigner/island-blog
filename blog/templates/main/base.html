@@ -2,6 +2,15 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+<!-- {% load app_filters %} -->
+
+<!-- 
+SECTIONS: 
+- blog title
+- nav bar
+- main section
+- right sidebar
+- footer -->
 
 <!DOCTYPE html>
 <html>
@@ -16,22 +25,25 @@
     <!-- NAVIGATION BAR -->
     <nav class="navbar navbar-default" id="menu-bar">
       <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Beach</a></li>
-                <li><a href="#">Sidney</a></li>
-                <li><a href="#">Wineries</a></li>
-                <li><a href="#">These can be created in a loop or something</a></li>
-              </ul>
-            </li>
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-          </ul>
-        </div>
+        <ul class="nav nav-justified">
+          <li class="active"><a href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
+<!-- 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for word in tag.article_set.all %}
+                <li><a href="{{ word.url }}">{{word}}</a></li>
+              {% endfor %} -->
+<!--                 <li><a href="#">Beach</a></li>
+              <li><a href="#">Sidney</a></li>
+              <li><a href="#">Wineries</a></li>
+              <li><a href="#">These can be created in a loop or something</a></li>
+            </ul>
+          </li> -->
+
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
       </div>
     </nav>
 
@@ -43,12 +55,35 @@
 
     <!-- RIGHT SIDEBAR WITH SEARCH AND SUBSCRIBE OPTIONS -->
     <div id="right-sidebar">
+
+      <!-- SEARCH BAR -->
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+      
+      <!-- PHOTO AND WELCOME TEXT -->
+      <div id="mini-photo"></div>
+      <div> 
+        <p>Welcome to Vancouver Island!<br><span id="read-more"><a href="{% url 'about' %}">Read More</a></span></p>
+      </div>
+
+      <!-- SUBSCRIBE TO MY BLOG -->
+      <div><p>Love my blog? Subscribe below to receive regular posts!</p></div>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Email">
+        </div>
+        <button type="submit" class="btn btn-default">Subscribe</button>
+      </form>
     </div>
+
+    <!-- FOOTER -->
+<!--     <div id="footer">
+      Copyright &#169; 2016 Jennifer Tigner
+    </div>
+ -->
   </body>
 </html>

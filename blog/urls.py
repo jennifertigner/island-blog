@@ -13,10 +13,9 @@ urlpatterns = [
   url(r'^article/$', RedirectView.as_view(pattern_name='index')),
   url(r'^index/$', RedirectView.as_view(pattern_name='index')),
   url(r'^home/$', RedirectView.as_view(pattern_name='index')),
+  url(r'^browse/$', RedirectView.as_view(pattern_name='index')), 
   # ex: /articles/5
   url(r'^article/(?P<article_id>[0-9]+)/$', views.article, name='article'),
-  # ex: /browse
-  url(r'^browse/$', views.browse_tag_list, name='browse_tag_list'), 
   # ex: /browse/beach
   url(r'^browse/(?P<tag_word>[a-zA-Z]+)/$', views.browse, name='browse'), 
   # ex: /about

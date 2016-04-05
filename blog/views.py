@@ -24,17 +24,18 @@ def browse(request, tag_word):
     'article_list': article_list
   })
 
-def browse_tag_list(request): 
-  tags = Tag.objects.all()
-  return render(request, 'browse/tag_list.html', {
-    'tags': tags
-  })
-
 def contact(request):
   return render(request, 'contact/contact.html')
 
 def index(request):
-  return render(request, 'main/index.html')
+  all_articles = Article.objects.all()
+  all_comments = Comment.objects.all()
+  # all_images = Image.objects.all()
+  return render(request, 'main/index.html', {
+    'all_articles': all_articles,
+    'all_comments': all_comments, 
+    # 'all_images': all_images
+  })
 
 def error404(request):
   response = render('error/404.html', {},

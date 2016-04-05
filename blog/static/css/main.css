@@ -1,44 +1,126 @@
-/*Jenn's CSS file*/
+/* Jenn's CSS */
 
-/*I just have these ugly-ish settings to test that it works for now*/
+/*
+Table of contents:
+  - General things
+  - Header (blog name and nav bar)
+  - Footer
+  - Right sidebar
+  - Main area for pages
+*/
+
+/*---------------------------------------------------*/
+
+/* GENERAL THINGS */
+
 body {
   background-color: pink;
   font-family: cursive;
   font-size: 14pt;
+  height: 100%;
+  position: relative;
 }
 
-#light-green {
-  background-color: lightgreen;
+/* main article area */
+#main-area {
+  border: 1px solid black;
+  display: inline-block;
+  left: 0;
+  padding: 3%;
+  position: absolute;
+  width: 75%;
 }
 
 /* HEADER: BLOG NAME AND NAV BAR */
+
 #blog-name {
+  border: 1px solid black;
   display: block;
   margin: auto;
   text-align: center;
   width: 100%;
-  border: 1px solid black;
 }
 
 #menu-bar {
-  display: block;
   margin: auto;
-  float: none;
 }
 
-#main-area {
-  display: inline-block;
-  border: 1px solid black;
-  padding: 10%;
+/* FOOTER */
+
+#footer {
+  bottom: 0;
+  border: 2px solid red;
+  /*clear: both;*/
+  display: block;
+  padding: 1%;
   position: absolute;
-  left: 0%;
-  width: 75%;
+  text-align: center;
+  width: 100%;
 }
+
+/* RIGHT SIDEBAR */
 
 #right-sidebar {
-  display: inline-block;
   border: 1px solid black;
+  display: inline-block;
+  padding: 3%;
+  /*COMMENTING THE NEXT LINE OUT MAKES THE FOOTER GO TO THE BOTTOM, BUT IT MESSES EVERYTHING ELSE UP*/
   position: absolute;
-  right: 0%;
+  right: 0;
   width: 25%;
+  /*height: 800px;*/
+}
+
+#mini-photo {
+  background-image: url("../../media/profile.jpg");
+  background-size: 100%;
+  border: 1px solid black;
+  border-radius: 50%; 
+  clear: both;
+  height: 12vw;
+  margin: 0 auto;
+  width: 12vw;
+}
+
+#read-more {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+
+/* ABOUT ME PAGE */
+
+#profile-full {
+  border: 1px solid black;
+  border-radius: 10%;
+  height: 35vw;
+  position: relative;
+  top: 0;
+}
+
+#about-me-text {
+  display: inline-block;
+  margin-left: 3vw;
+  margin-top: 5vw;
+  text-align: justify;
+  vertical-align: top;
+  width: 30vw;
+}
+
+/*#article-preview {
+  margin: 10%;
+  padding: 5%;
+}*/
+
+img {
+  width: 50vw;
+}
+
+#preview-img {
+  width: 15vw;
+}
+
+/* FOR COMMENTS */
+#light-green {
+  background-color: lightgreen;
 }

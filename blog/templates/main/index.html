@@ -1,4 +1,27 @@
 {% extends 'main/base.html' %}
 {% block content %}
-  have article preview page here
+
+  <!-- Bootstrap thumbnails for article preview -->
+  {% for article in all_articles %}
+    <div class="row">
+      <div class="col-sm-6 col-md-12">
+        <div class="thumbnail">
+          <p>{{ article.title }}</p>
+          <p>{{ article.date_posted|date:"F j, Y" }}</p>
+          <p><img id="preview-img" src="{{ article.image_set.filepath.url }}" alt="{{ image.description }}"/></p>
+          <p>{{ article.summary }}</p>
+          <p>Tags:
+            <ul>
+            {% for tag in article.tags.all %}
+              <li>{{ tag.tag_text }}</li>
+            {% endfor %}
+            </ul>
+          </p>
+          <p><a href="/article/{{ article.id }}">Read More</a></p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+<!-- add pagination here -->
+
 {% endblock %}
