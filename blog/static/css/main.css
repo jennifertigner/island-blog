@@ -14,11 +14,27 @@ Table of contents:
 /* GENERAL THINGS */
 
 body {
-  background-color: pink;
+  background-color: lightblue;
   font-family: cursive;
   font-size: 14pt;
   height: 100%;
   position: relative;
+}
+
+
+/*#article-preview {
+  margin: 10%;
+  padding: 5%;
+}*/
+
+img {
+  width: 50vw;
+}
+
+#preview-img {
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 20vw;
 }
 
 /* main article area */
@@ -115,22 +131,24 @@ body {
   padding-top: 0%
 }
 
-/*#article-preview {
-  margin: 10%;
-  padding: 5%;
-}*/
-
-img {
-  width: 50vw;
-}
-
-#preview-img {
-  border: 1px solid black;
-  border-radius: 5%;
-  width: 20vw;
-}
-
 /* FOR COMMENTS */
 #light-green {
   background-color: lightgreen;
+}
+
+/* 404 AND 500 ERROR PAGES */
+
+.error {
+  position: absolute;
+  margin-left: auto ;
+  margin-right: auto ;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+
+.error-image {
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 30vw;
 }

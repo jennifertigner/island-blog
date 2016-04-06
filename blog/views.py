@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.template import RequestContext, Context
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Article, Comment, Tag, Image
 # for the contact page email form:
 from .forms import ContactForm
@@ -12,7 +12,7 @@ def about(request):
   return render(request, 'about/about.html')
 
 def article(request, article_id):
-  article = Article.objects.get(pk=article_id)
+  article = get_object_or_404(Article, pk=article_id)
   image = Image.objects.get(article=article_id)
   comments = Comment.objects.filter(article=article_id).order_by('-date_posted')
   return render(request, 'article/article.html', {
@@ -23,7 +23,7 @@ def article(request, article_id):
 
 # This is for the subscription form on the sidebar
 def base(request):
-  tag = Tag.objects.all()
+  tag = get_list_or_404(Tag)
   form_class = SubscribeForm
   if request.method == 'POST':
     form = form_class(data=request.POST)
@@ -45,7 +45,7 @@ def base(request):
   })
 
 def browse(request, tag_word):
-  tag = Tag.objects.get(tag_text=tag_word)
+  tag = get_object_or_404(Tag, tag_text=tag_word)
   article_list = tag.article_set.all()
   all_images = Image.objects.all()
   return render(request, 'browse/browse.html', {
@@ -86,13 +86,8 @@ def contact(request):
     'form': form_class
   })
 
-# def contact_confirmation(request):
-#   # your normal code
-#   messages.add_message(request, messages.INFO, 'Yeehaw!')
-#   return render(request, 'sometemplate.html')
-
 def index(request):
-  all_articles = Article.objects.all()
+  all_articles = get_list_or_404(Article)
   all_comments = Comment.objects.all()
   all_images = Image.objects.all()
   return render(request, 'main/index.html', {
@@ -101,14 +96,26 @@ def index(request):
     'all_images': all_images
   })
 
-def error404(request):
-  response = render('error/404.html', {},
+def handler400(request):
+  response = render(request, 'error/400.html',
+  context_instance=RequestContext(request))
+  response.status_code = 400
+  return response
+
+def handler403(request):
+  response = render(request, 'error/403.html',
+  context_instance=RequestContext(request))
+  response.status_code = 403
+  return response
+
+def handler404(request):
+  response = render(request, 'error/404.html',
   context_instance=RequestContext(request))
   response.status_code = 404
   return response
 
-def error500(request):
-  response = render('error/500.html', {},
+def handler500(request):
+  response = render(request, 'error/500.html',
   context_instance=RequestContext(request))
   response.status_code = 500
   return response
