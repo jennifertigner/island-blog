@@ -6,6 +6,7 @@ from .models import Article, Comment, Tag, Image
 from .forms import ContactForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
+from django.contrib import messages
 
 def about(request):
   return render(request, 'about/about.html')
@@ -79,10 +80,16 @@ def contact(request):
         headers = {'Reply-To': contact_email }
       )
       email.send()
+      messages.add_message(request, messages.INFO, 'Thanks for the message!')
       return redirect('contact')
   return render(request, 'contact/contact.html', {
     'form': form_class
   })
+
+# def contact_confirmation(request):
+#   # your normal code
+#   messages.add_message(request, messages.INFO, 'Yeehaw!')
+#   return render(request, 'sometemplate.html')
 
 def index(request):
   all_articles = Article.objects.all()
