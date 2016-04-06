@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
+  url(r'^markdownx/', include('markdownx.urls')),
   # this is the homepage (localhost:8000)
   url(r'^$', views.index, name='index'),
   # these redirect to the homepage
@@ -27,3 +28,5 @@ urlpatterns = [
   # server error
   url(r'500/$', views.error500),     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

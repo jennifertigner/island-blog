@@ -20,6 +20,29 @@ def article(request, article_id):
     'comments': comments
   })
 
+# This is for the subscription form on the sidebar
+def base(request):
+  tag = Tag.objects.all()
+  form_class = SubscribeForm
+  if request.method == 'POST':
+    form = form_class(data=request.POST)
+    if form.is_valid():
+      contact_email = request.POST.get('contact_email', '')
+      template = get_template('main/subscription_request_template.txt')
+      context = Context({'contact_email': contact_email})
+      content = template.render(context)
+      email = EmailMessage(
+        "New subscription request",
+        content,
+        "Jenn's Little Island Blog" +'',
+        ['jennifertigner@gmail.com']
+      )
+      email.send()
+  return render(request, 'main/base.html', {
+    'tag': tag,
+    'form': form_class
+  })
+
 def browse(request, tag_word):
   tag = Tag.objects.get(tag_text=tag_word)
   article_list = tag.article_set.all()

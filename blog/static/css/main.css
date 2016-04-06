@@ -47,13 +47,15 @@ body {
 
 /* FOOTER */
 
-#footer {
+.all-but-footer {
+}
+
+.footer {
+  background-color: grey;
   bottom: 0;
-  border: 2px solid red;
-  /*clear: both;*/
   display: block;
   padding: 1%;
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
 }
@@ -132,4 +134,3 @@ img {
 #light-green {
   background-color: lightgreen;
 }
-

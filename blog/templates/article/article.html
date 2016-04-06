@@ -5,11 +5,9 @@
 <p>Summary: {{ article.summary }}</p>
 
 <p>Tags:
-  <ul>
   {% for tag in article.tags.all %}
-    <li>{{ tag.tag_text }}</li>
+    <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
   {% endfor %}
-  </ul>
 </p>
 
 <p>Article text: {{ article.article_text }}<br></p>
@@ -18,7 +16,7 @@
   {% for item in comments.all %}
     <div id="light-green">
       <p>Name: {{ item.name }}</p>
-      <p>Email: {{ item.comment_text }}</p>
+      <p>Email: {{ item.email }}</p>
       <p>Comment: {{ item.comment_text }}
       <p>Date posted: {{ item.date_posted }}</p>
     </div>

@@ -11,71 +11,83 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   </head>
   <body>
-    <!-- TITLE ABOVE NAVIGATION BAR -->
-    <div id='blog-name'><a href="{% url 'index' %}">Jenn's Little Island Blog</a></div>
+    <div class="all-but-footer">
 
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-default" id="menu-bar">
-      <div class="container-fluid">
-        <ul class="nav nav-justified">
-          <li class="active"><a href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
+      <!-- TITLE ABOVE NAVIGATION BAR -->
+      <div id='blog-name'><a href="{% url 'index' %}">Jenn's Little Island Blog</a></div>
+
+      <!-- NAVIGATION BAR -->
+      <nav class="navbar navbar-default" id="menu-bar">
+        <div class="container-fluid">
+          <ul class="nav nav-justified">
+
+            <!-- home -->
+            <li><a href="{% url 'index' %}">Home</a></li>
+
+            <!-- browse articles -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              
+              <!-- this is hardcoded: figure out how to fix -->
+              <li><a href="/browse/Sidney">Sidney</a></li>
+              <li><a href="/browse/Sightseeing">Sightseeing</a></li>
+              <li><a href="/browse/Victoria">Victoria</a></li>
 <!-- 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse Articles<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              {% for word in tag.article_set.all %}
-                <li><a href="{{ word.url }}">{{word}}</a></li>
-              {% endfor %} -->
-<!--                 <li><a href="#">Beach</a></li>
-              <li><a href="#">Sidney</a></li>
-              <li><a href="#">Wineries</a></li>
-              <li><a href="#">These can be created in a loop or something</a></li>
-            </ul>
-          </li> -->
+                {% for tag in tags %}
+                  <li><a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a></li>
+                {% endfor %} -->
 
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+              </ul>
+            </li>
 
-    <!-- MAIN AREA OF WEBSITE: ONLY THIS AREA WILL CHANGE FROM PAGE-TO-PAGE -->
-    <div id="main-area">
-      {% block content %}
-      {% endblock %}
-    </div>
+            <!-- about -->
+            <li><a href="{% url 'about' %}">About</a></li>
 
-    <!-- RIGHT SIDEBAR WITH SEARCH AND SUBSCRIBE OPTIONS -->
-    <div id="right-sidebar">
-
-      <!-- search bar -->
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+            <!-- contact -->
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      
-      <!-- photo and welcome text -->
-      <div id="mini-photo"></div>
-      <div> 
-        <p>Welcome to Vancouver Island!<br><span id="read-more"><a href="{% url 'about' %}">Read More</a></span></p>
+      </nav>
+
+      <!-- MAIN AREA OF WEBSITE: ONLY THIS AREA WILL CHANGE FROM PAGE-TO-PAGE -->
+      <div id="main-area">
+        {% block content %}
+        {% endblock %}
       </div>
 
-      <!-- subscribe to my blog -->
-      <div><p>Love my blog? Subscribe below to receive regular posts!</p></div>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email">
+      <!-- RIGHT SIDEBAR WITH SEARCH AND SUBSCRIBE OPTIONS -->
+      <div id="right-sidebar">
+
+        <!-- search bar -->
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+        <!-- photo and welcome text -->
+        <div id="mini-photo"></div>
+        <div> 
+          <p>Welcome to Vancouver Island!<br><span id="read-more"><a href="{% url 'about' %}">Read More</a></span></p>
         </div>
-        <button type="submit" class="btn btn-default">Subscribe</button>
-      </form>
+
+        <!-- subscribe to my blog -->
+        <div><p>Love my blog? Subscribe below to receive regular posts!</p>
+          <form role="form" action="" method="post">
+            {% csrf_token %}
+            <div>{{ form.as_p }}</div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <!-- FOOTER -->
-<!--     <div id="footer">
+<!--     <div class="footer">
       Copyright &#169; 2016 Jennifer Tigner
-    </div>
- -->
+    </div> -->
+
   </body>
 </html>

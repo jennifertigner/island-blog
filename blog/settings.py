@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog', 
     'django_cleanup',
-    'bootstrap3'
+    'bootstrap3',
+    'markdownx',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,6 +86,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+MARKDOWNX_MEDIA_PATH = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)),'static')
