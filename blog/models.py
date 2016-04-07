@@ -1,10 +1,9 @@
 from django.db import models
-from markdownx.models import MarkdownxField
 
 class Article(models.Model):
   title = models.CharField(max_length=500)
   summary = models.CharField(max_length=1000)
-  article_text = MarkdownxField(null=True)
+  article_text = models.TextField(null=True)
   tags = models.ManyToManyField('Tag', blank=True)
   date_posted = models.DateField(auto_now=False, auto_now_add=True)
   latitude = models.FloatField(default=48.4692338)

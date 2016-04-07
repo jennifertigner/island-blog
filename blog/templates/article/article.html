@@ -1,9 +1,10 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load markup_tags %}
 
 <h3>{{ article.title }}</h3>
 <p>{{ article.date_posted }}</p>
-<p>{{ article.article_text }}<br></p>
+<p>{{ article.article_text|apply_markup:"markdown" }}<br></p>
 <p><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 
 <!-- HAVE SOCIAL SHARING ICONS HERE -->

@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'blog', 
     'django_cleanup',
     'bootstrap3',
-    'markdownx',
+    'django_markup',
 ]
 
 MIDDLEWARE_CLASSES = [
