@@ -1,34 +1,37 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-  <p>Here are the latest adventures...</p>
+<h3>HERE ARE THE LATEST ADVENTURES...</h3>
   <!-- Bootstrap thumbnails for article preview -->
-  {% for article in all_articles %}
+{% for article in all_articles %}
+  <div class="thumbnail">
     <div class="row">
       <div class="col-sm-6 col-md-12">
-        <div class="thumbnail">
-          <p>{{ article.title }}</p>
-          <p>{{ article.date_posted|date:"F j, Y" }}</p>
 
+        <div class="image-half">
           {% for image in all_images %}
             {% if image.article.id == article.id %}
               <p><img id="preview-img" src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
             {% endif %}
           {% endfor %}
+        </div>
 
-          <p>{{ article.summary }}</p>
-
+        <div class="text-half">
+          <div style="display:inline-block;"><h3>{{ article.title }}</h3></div>
+          <div style="display:inline-block;"><p style="font-size: 10pt"><a href="/article/{{ article.id }}">Read More ></a></p></div>
+          <p>{{ article.date_posted|date:"F j, Y" }}</p>
+          <p class="summary-spacing">"{{ article.summary }}"</p>
           <p>Tags:
             {% for tag in article.tags.all %}
               <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
             {% endfor %}
           </p>
-
-          <p><a href="/article/{{ article.id }}">Read More</a></p>
         </div>
+
       </div>
     </div>
-  {% endfor %}
+  </div>
+{% endfor %}
 <!-- add pagination here -->
 
 {% endblock %}

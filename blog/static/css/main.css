@@ -3,10 +3,13 @@
 /*
 Table of contents:
   - General things
+  - Articles
+  - Article previews
   - Header (blog name and nav bar)
   - Footer
   - Right sidebar
-  - Main area for pages
+  - About me/contact pages
+  - Error pages
 */
 
 /*---------------------------------------------------*/
@@ -14,32 +17,19 @@ Table of contents:
 /* GENERAL THINGS */
 
 body {
-  background-color: lightblue;
-  font-family: cursive;
-  font-size: 14pt;
+  background-color: #e3e0cf;
+  color: #283018;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 16px;
   height: 100%;
   position: relative;
 }
 
-
-/*#article-preview {
-  margin: 10%;
-  padding: 5%;
-}*/
-
-img {
-  width: 50vw;
+h3 {
+  font-family: 'Poiret One', cursive;
 }
 
-#preview-img {
-  border: 1px solid black;
-  border-radius: 5%;
-  width: 20vw;
-}
-
-/* main article area */
 #main-area {
-  border: 1px solid black;
   display: inline-block;
   left: 0;
   padding: 3%;
@@ -47,17 +37,95 @@ img {
   width: 75%;
 }
 
+/*dropdown menu in nav bar*/
+.topics {
+  font-size: 16pt;
+}
+
+/* ARTICLES */
+
+/* comments */
+.comment-section {
+  background-color: #fff;
+  border: 3px solid #c5d5cb;
+  margin-top: 3%;
+  padding: 1%;
+  width: 50vw;
+}
+
+#comment-info {
+  display: inline-block;
+  width: 32vw;
+}
+
+#comment-date {
+  display: inline-block;
+  font-size: 12px;
+  font-style: italic;
+  width: 15vw;
+}
+
+img {
+  width: 50vw;
+}
+
+/* ARTICLE PREVIEWS (index.html and browse.html)*/
+
+#preview-img {
+  border: 1px solid black;
+  width: 20vw;
+}
+
+.thumbnail {
+  background-color: #9fa8a3;
+  padding: 5%;
+  padding-top: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 65vw;
+}
+
+.summary-spacing {
+  font-style: italic;
+  margin: 15%;
+  margin-right: 0%;
+}
+
+.image-half {
+  display: inline-block;
+  float: left;
+  margin-top: 5%;
+  width: 25vw;
+}
+
+.text-half {
+  float: right;
+  display: inline-block;
+  margin-right: 5%;
+  width: 30vw;
+}
+
 /* HEADER: BLOG NAME AND NAV BAR */
 
 #blog-name {
-  border: 1px solid black;
+  background-image: url("../../media/header.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   display: block;
-  margin: auto;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 20pt;
+  height: 10vw;
+  margin: 0 auto;
   text-align: center;
-  width: 100%;
 }
 
 #menu-bar {
+  background-color: #c5d5cb;
+  border: 1px solid black;
+  font-family: 'Poiret One', cursive;
+  font-size: 16pt;
+  font-weight: bold;
   margin: auto;
 }
 
@@ -79,14 +147,11 @@ img {
 /* RIGHT SIDEBAR */
 
 #right-sidebar {
-  border: 1px solid black;
   display: inline-block;
   padding: 3%;
-  /*COMMENTING THE NEXT LINE OUT MAKES THE FOOTER GO TO THE BOTTOM, BUT IT MESSES EVERYTHING ELSE UP*/
   position: absolute;
   right: 0;
   width: 25%;
-  /*height: 800px;*/
 }
 
 #mini-photo {
@@ -100,22 +165,13 @@ img {
   width: 12vw;
 }
 
-#read-more {
+.read-more {
   display: block;
   text-align: right;
   width: 100%;
 }
 
 /* ABOUT ME AND CONTACT PAGES */
-
-#profile-full {
-  border: 1px solid black;
-  border-radius: 10%;
-  height: 40vw;
-  width: 30vw;
-  position: relative;
-  top: 0;
-}
 
 #about-me-text {
   display: inline-block;
@@ -131,9 +187,13 @@ img {
   padding-top: 0%
 }
 
-/* FOR COMMENTS */
-#light-green {
-  background-color: lightgreen;
+#profile-full {
+  border: 1px solid black;
+  border-radius: 10%;
+  height: 40vw;
+  width: 30vw;
+  position: relative;
+  top: 0;
 }
 
 /* 404 AND 500 ERROR PAGES */
