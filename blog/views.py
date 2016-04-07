@@ -3,7 +3,7 @@ from django.template import RequestContext, Context
 from django.http import HttpResponse, Http404
 from .models import Article, Comment, Tag, Image
 # for the contact page email form:
-from .forms import ContactForm
+from .forms import ContactForm, SubscribeForm, CommentForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.contrib import messages
@@ -15,10 +15,18 @@ def article(request, article_id):
   article = get_object_or_404(Article, pk=article_id)
   image = Image.objects.get(article=article_id)
   comments = Comment.objects.filter(article=article_id).order_by('-date_posted')
+  comment_form_class = CommentForm
+  if request.method == "POST":
+    comment_form = comment_form_class(data=request.POST)
+    new_comment = comment_form.save(commit=False)
+    new_comment.article = article
+    new_comment.save()
+    messages.add_message(request, messages.INFO, 'Your comment has been added')
   return render(request, 'article/article.html', {
     'article': article,  
     'image': image,
-    'comments': comments
+    'comments': comments, 
+    'comment_form': comment_form_class, 
   })
 
 # This is for the subscription form on the sidebar
@@ -60,10 +68,10 @@ def contact(request):
     form = form_class(data=request.POST)
     # checks if info is valid
     if form.is_valid():
+      # puts email template together
       contact_name = request.POST.get('contact_name', '')
       contact_email = request.POST.get('contact_email', '')
       form_content = request.POST.get('content', '')
-      # puts email template together
       template = get_template('contact/contact_email_template.txt')
       context = Context({
         'contact_name': contact_name,
@@ -95,6 +103,8 @@ def index(request):
     'all_comments': all_comments, 
     'all_images': all_images
   })
+
+# ERRORS:
 
 def handler400(request):
   response = render(request, 'error/400.html',

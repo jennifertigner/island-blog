@@ -2,6 +2,16 @@
 {% block content %}
 {% load markup_tags %}
 
+<!-- Alert to let the user know their comment was successfully posted -->
+{% if messages %}
+  {% for message in messages %}
+    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
 <div id="article">
   <h3>{{ article.title }}</h3>
   <p>{{ article.date_posted }}</p>
@@ -15,7 +25,38 @@
     {% endfor %}
   </p>
 
+  <!-- ALL THE STUFF BELOW IS FOR THE COMMENTS SECTION -->
   <h3>{{ comments.all|length }} comments:</h3>
+
+  <div id="comment-form">
+    <form role="form" action="" method="post">
+      {% csrf_token %}
+
+      <!-- NAME -->
+      <div class="form-group row col-md-offset-2">
+        <label class="col-sm-2 form-control-label">Name</label>
+        <div class="col-sm-6">{{ comment_form.name }}</div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group row col-md-offset-2">
+        <label class="col-sm-2 form-control-label">Email Address</label>
+        <div class="col-sm-6">{{ comment_form.email }}</div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="form-group row col-md-offset-2">
+        <label class="col-sm-2 form-control-label">Message</label>
+        <div class="col-sm-6">{{ comment_form.comment_text }}</div>
+      </div> 
+
+      <!-- SUBMIT BUTTON -->
+      <div class="form-group row col-md-offset-4">
+        <input class="col-sm-2 button btn-default" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
   {% for item in comments.all %}
     <div class="comment-section">
       <div id="comment-info">
