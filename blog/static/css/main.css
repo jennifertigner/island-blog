@@ -73,6 +73,12 @@ img {
   width: 15vw;
 }
 
+#add-comment {
+  font-style: italic;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
 /* ARTICLE PREVIEWS (index.html and browse.html)*/
 
 #preview-img {

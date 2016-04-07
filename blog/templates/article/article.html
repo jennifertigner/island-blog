@@ -28,7 +28,23 @@
   <!-- ALL THE STUFF BELOW IS FOR THE COMMENTS SECTION -->
   <h3>{{ comments.all|length }} comments:</h3>
 
-  <div id="comment-form">
+  {% for item in comments.all %}
+    <div class="comment-section">
+      <div id="comment-info">
+        <p>
+          <span class="name-hover">{{ item.name }} says:</span> 
+          <span class="email-hover" style="display:none"> - {{ item.email }}</span>
+        </p>
+        <p>{{ item.comment_text }}</p>
+      </div>
+      <div id="comment-date">
+        <p>{{ item.date_posted }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+  <div id="add-comment"><p>Click here to add a comment</p></div>
+  <div id="comment-form" style="display:none">
     <form role="form" action="" method="post">
       {% csrf_token %}
 
@@ -56,24 +72,14 @@
       </div>
     </form>
   </div>
-
-  {% for item in comments.all %}
-    <div class="comment-section">
-      <div id="comment-info">
-        <p>
-          <span class="name-hover">{{ item.name }} says:</span> 
-          <span class="email-hover" style="display:none"> - {{ item.email }}</span>
-        </p>
-        <p>{{ item.comment_text }}</p>
-      </div>
-      <div id="comment-date">
-        <p>{{ item.date_posted }}</p>
-      </div>
-    </div>
-  {% endfor %}
 </div>
 
 <script>
+
+  $("#add-comment").click(function(){
+      $("#comment-form").toggle("slow");
+  });
+
   $('.name-hover').hover(function() {
     $(this).next(".email-hover").fadeIn();
     }, function() {
