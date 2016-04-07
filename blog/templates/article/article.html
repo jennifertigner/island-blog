@@ -2,33 +2,35 @@
 {% block content %}
 {% load markup_tags %}
 
-<h3>{{ article.title }}</h3>
-<p>{{ article.date_posted }}</p>
-<p>{{ article.article_text|apply_markup:"markdown" }}<br></p>
-<p><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
+<div id="article">
+  <h3>{{ article.title }}</h3>
+  <p>{{ article.date_posted }}</p>
+  <p>{{ article.article_text|apply_markup:"markdown" }}<br></p>
+  <p><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 
-<!-- HAVE SOCIAL SHARING ICONS HERE -->
-<p>Tags:
-  {% for tag in article.tags.all %}
-    <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
+  <!-- HAVE SOCIAL SHARING ICONS HERE -->
+  <p>Tags:
+    {% for tag in article.tags.all %}
+      <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
+    {% endfor %}
+  </p>
+
+  <h3>{{ comments.all|length }} comments:</h3>
+  {% for item in comments.all %}
+    <div class="comment-section">
+      <div id="comment-info">
+        <p>
+          <span class="name-hover">{{ item.name }} says:</span> 
+          <span class="email-hover" style="display:none"> - {{ item.email }}</span>
+        </p>
+        <p>{{ item.comment_text }}</p>
+      </div>
+      <div id="comment-date">
+        <p>{{ item.date_posted }}</p>
+      </div>
+    </div>
   {% endfor %}
-</p>
-
-<h3>{{ comments.all|length }} comments:</h3>
-{% for item in comments.all %}
-  <div class="comment-section">
-    <div id="comment-info">
-      <p>
-        <span class="name-hover">{{ item.name }} says:</span> 
-        <span class="email-hover" style="display:none"> - {{ item.email }}</span>
-      </p>
-      <p>{{ item.comment_text }}</p>
-    </div>
-    <div id="comment-date">
-      <p>{{ item.date_posted }}</p>
-    </div>
-  </div>
-{% endfor %}
+</div>
 
 <script>
   $('.name-hover').hover(function() {

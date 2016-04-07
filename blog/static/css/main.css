@@ -44,6 +44,14 @@ h3 {
 
 /* ARTICLES */
 
+#article {
+  margin: 5%;
+}
+
+img {
+  width: 50vw;
+}
+
 /* comments */
 .comment-section {
   background-color: #fff;
@@ -63,10 +71,6 @@ h3 {
   font-size: 12px;
   font-style: italic;
   width: 15vw;
-}
-
-img {
-  width: 50vw;
 }
 
 /* ARTICLE PREVIEWS (index.html and browse.html)*/
