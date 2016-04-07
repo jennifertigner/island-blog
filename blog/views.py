@@ -9,9 +9,13 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 
 def about(request):
-  return render(request, 'about/about.html')
+  tags = get_list_or_404(Tag)
+  return render(request, 'about/about.html', {
+    'tags': tags
+  })
 
 def article(request, article_id):
+  tags = get_list_or_404(Tag)
   article = get_object_or_404(Article, pk=article_id)
   image = Image.objects.get(article=article_id)
   comments = Comment.objects.filter(article=article_id).order_by('-date_posted')
@@ -23,6 +27,7 @@ def article(request, article_id):
     new_comment.save()
     messages.add_message(request, messages.INFO, 'Your comment has been added')
   return render(request, 'article/article.html', {
+    'tags': tags,
     'article': article,  
     'image': image,
     'comments': comments, 
@@ -30,39 +35,40 @@ def article(request, article_id):
   })
 
 # This is for the subscription form on the sidebar
-def base(request):
-  tag = get_list_or_404(Tag)
-  form_class = SubscribeForm
-  if request.method == 'POST':
-    form = form_class(data=request.POST)
-    if form.is_valid():
-      contact_email = request.POST.get('contact_email', '')
-      template = get_template('main/subscription_request_template.txt')
-      context = Context({'contact_email': contact_email})
-      content = template.render(context)
-      email = EmailMessage(
-        "New subscription request",
-        content,
-        "Jenn's Little Island Blog" +'',
-        ['jennifertigner@gmail.com']
-      )
-      email.send()
-  return render(request, 'main/base.html', {
-    'tag': tag,
-    'form': form_class
-  })
+# def base(request):
+  # form_class = SubscribeForm
+  # if request.method == 'POST':
+  #   form = form_class(data=request.POST)
+  #   if form.is_valid():
+  #     contact_email = request.POST.get('contact_email', '')
+  #     template = get_template('main/subscription_request_template.txt')
+  #     context = Context({'contact_email': contact_email})
+  #     content = template.render(context)
+  #     email = EmailMessage(
+  #       "New subscription request",
+  #       content,
+  #       "Jenn's Little Island Blog" +'',
+  #       ['jennifertigner@gmail.com']
+  #     )
+  #     email.send()
+  # return render(request, 'main/base.html', {
+  #   'form': form_class
+  # })
 
 def browse(request, tag_word):
+  tags = get_list_or_404(Tag)
   tag = get_object_or_404(Tag, tag_text=tag_word)
   article_list = tag.article_set.all()
   all_images = Image.objects.all()
   return render(request, 'browse/browse.html', {
+    'tags': tags,
     'tag': tag,
     'article_list': article_list, 
     'all_images': all_images
   })
 
 def contact(request):
+  tags = get_list_or_404(Tag)
   form_class = ContactForm
   if request.method == 'POST':
     form = form_class(data=request.POST)
@@ -91,14 +97,17 @@ def contact(request):
       messages.add_message(request, messages.INFO, 'Thanks for the message!')
       return redirect('contact')
   return render(request, 'contact/contact.html', {
+    'tags': tags,
     'form': form_class
   })
 
 def index(request):
+  tags = get_list_or_404(Tag)
   all_articles = get_list_or_404(Article)
   all_comments = Comment.objects.all()
   all_images = Image.objects.all()
   return render(request, 'main/index.html', {
+    'tags': tags,
     'all_articles': all_articles,
     'all_comments': all_comments, 
     'all_images': all_images
