@@ -110,27 +110,24 @@ h3 {
   padding: 3%;
   padding-top: 100px;
   position: relative;
-  width: 25vw;
+  width: 26vw;
 }
 
 #search-area, #welcome-area, #subscribe-area {
-  display: block;
-  float: right;
+  display: block;  
   padding-top: 5%;
-  padding-bottom: 20%;
   text-align: center;
 }
 
-/*#welcome-area {
-  background-color: #c5d5cb;
-  border-radius: 20%;
-}*/
+#subscribe-area {
+  padding-top: 20%;
+}
 
 #mini-photo {
   background-image: url("../../media/profile.jpg");
   background-size: 100%;
   border: 10px solid #c5d5cb;
-  border-radius: 50%; 
+  border-radius: 25%; 
   box-shadow: 0px 0px 0px 2px #9fa8a3;
   clear: both;
   height: 15vw;
@@ -140,6 +137,7 @@ h3 {
 
 .read-more {
   display: block;
+  padding-top: 3%;
   text-align: right;
   width: 100%;
 }

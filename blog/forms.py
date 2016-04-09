@@ -15,4 +15,8 @@ class ContactForm(forms.Form):
   content = forms.CharField(required=True, widget=forms.Textarea)
 
 class SubscribeForm(forms.Form):
-  contact_email = forms.EmailField(required=True)
+  contact_email = forms.EmailField(
+    required=True, 
+    widget=forms.TextInput(attrs={'placeholder': 'Email address'}), 
+    label=''
+  )

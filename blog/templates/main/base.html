@@ -74,10 +74,9 @@
 
         <!-- photo and welcome text -->
         <div id="welcome-area">
+          <h3>Welcome to <br>Vancouver Island!<br></h3>
           <div id="mini-photo"></div>
-          <div> 
-            <p>Welcome to Vancouver Island!<br><span class="read-more"><a href="{% url 'about' %}">Read More ></a></span></p>
-          </div>
+          <span class="read-more"><a href="{% url 'about' %}">Read More ></a></span>
         </div>
     
         <!-- subscribe to my blog -->
@@ -85,7 +84,7 @@
           <p>Love my blog? Subscribe below to receive regular posts!</p>
           <form role="form" action="" method="post">
             {% csrf_token %}
-            <div>{{ subscribe_form.as_p }}</div>
+            <div style="display:inline">{{ subscribe_form }}</div>
             <button type="submit">Submit</button>
           </form>
         </div>
