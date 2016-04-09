@@ -1,37 +1,37 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-<h3>{{ tag.tag_text }} Articles</h3>
+<h3>{{ tag.tag_text|upper }} ARTICLES</h3>
 
 <!-- Bootstrap thumbnails for article preview -->
 {% for article in article_list %}
-<div class="thumbnail">
-  <div class="row">
-    <div class="col-sm-6 col-md-12">
+  <div class="thumbnail">
+    <div class="row">
+      <div class="col-sm-6 col-md-12">
 
-      <div class="image-half">
-        {% for image in all_images %}
-          {% if image.article.id == article.id %}
-            <p><img id="preview-img" src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
-          {% endif %}
-        {% endfor %}
-      </div>
-
-      <div class="text-half">
-        <div style="display:inline-block;"><h3>{{ article.title }} </h3></div>
-        <div style="display:inline-block;"><p style="font-size: 10pt"><a href="/article/{{ article.id }}">Read More ></a></p></div>
-        <p>{{ article.date_posted|date:"F j, Y" }}</p>
-        <p class="summary-spacing">"{{ article.summary }}"</p>
-        <p>Tags:
-          {% for tag in article.tags.all %}
-            <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
+        <div class="image-half">
+          {% for image in all_images %}
+            {% if image.article.id == article.id %}
+              <p><img id="preview-img" src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
+            {% endif %}
           {% endfor %}
-        </p>
-      </div>
+        </div>
 
+        <div class="text-half">
+          <div style="display:inline-block;"><h3>{{ article.title }}</h3></div>
+          <div style="display:inline-block;"><p style="font-size: 10pt"><a href="/article/{{ article.id }}">Read More ></a></p></div>
+          <p>{{ article.date_posted|date:"F j, Y" }}</p>
+          <p class="summary-spacing">"{{ article.summary }}"</p>
+          <p>Tags:
+            {% for tag in article.tags.all %}
+              <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
+            {% endfor %}
+          </p>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
 {% endfor %}
 <!-- add pagination here -->
 

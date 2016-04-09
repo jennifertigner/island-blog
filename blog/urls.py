@@ -16,7 +16,6 @@ from . import views
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),  
-  # this is the homepage (localhost:8000)
   url(r'^$', views.index, name='index'),
   # these redirect to the homepage
   url(r'^article/$', RedirectView.as_view(pattern_name='index')),
@@ -24,15 +23,15 @@ urlpatterns = [
   url(r'^index/$', RedirectView.as_view(pattern_name='index')),
   url(r'^home/$', RedirectView.as_view(pattern_name='index')),
   url(r'^browse/$', RedirectView.as_view(pattern_name='index')), 
-  # ex: /articles/5
+  # all the regular pages
   url(r'^article/(?P<article_id>[0-9]+)/$', views.article, name='article'),
-  # ex: /browse/Beach
   url(r'^browse/(?P<tag_word>[a-zA-Z]+)/$', views.browse, name='browse'),
-  # ex: /about
+  url(r'^search/$', views.search, name='search'),
   url(r'^about/$', views.about, name='about'), 
-  # ex: /contact
   url(r'^contact/$', views.contact, name='contact'),
   # error pages
+  url(r'400/$', views.handler400),
+  url(r'403/$', views.handler403), 
   url(r'404/$', views.handler404),
   url(r'500/$', views.handler500),     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

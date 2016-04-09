@@ -1,18 +1,19 @@
-/* Jenn's CSS */
-
 /*
+
 Table of contents:
+
   - General things
-  - Articles
-  - Article previews
   - Header (blog name and nav bar)
   - Footer
   - Right sidebar
   - About me/contact pages
+  - Articles
+  - Article previews
   - Error pages
+
 */
 
-/*---------------------------------------------------*/
+/*--------------------------------------------------------*/
 
 /* GENERAL THINGS */
 
@@ -22,17 +23,65 @@ body {
   font-family: 'Century Gothic', sans-serif;
   font-size: 16px;
   height: 100%;
+  padding-top: 10vw;
   position: relative;
 }
 
 h3 {
   font-family: 'Poiret One', cursive;
+  position: relative;
 }
 
+/*the middle area where the pages load*/
 #main-area {
+  background-color: #e3e0cf;
   display: inline-block;
   padding: 3%;
+  padding-bottom: 150px;
+  padding-top: 80px;
+  position: relative;
   width: 70vw;
+}
+
+#all-but-footer {
+  background-color: #e3e0cf;
+  position: relative;
+}
+
+/* HEADER: BLOG NAME AND NAV BAR */
+
+#blog-name {
+  background-image: url("../../media/header.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 20pt;
+  height: 10vw;
+  margin: 0 auto;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.menu-bar {
+  background-color: #c5d5cb;
+  border: 1px solid black;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+  font-family: 'Poiret One', cursive;
+  font-size: 16pt;
+  font-weight: bold;
+  height: 5vw;
+  margin-bottom: -5vw;
+  z-index: 150;
+}
+
+.menu-bar-scrolled {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 /*dropdown menu in nav bar*/
@@ -40,10 +89,92 @@ h3 {
   font-size: 16pt;
 }
 
+/* FOOTER */
+
+.footer {
+  background-color: #e3e0cf;
+  bottom: 0;
+  clear: both;
+  display: block;
+  padding: 1%;
+  text-align: center;
+  width: 100%;
+}
+
+/* RIGHT SIDEBAR */
+
+#right-sidebar {
+  background-color: #e3e0cf;
+  display: inline-block;
+  float: right;
+  padding: 3%;
+  padding-top: 100px;
+  position: relative;
+  width: 25vw;
+}
+
+#search-area, #welcome-area, #subscribe-area {
+  display: block;
+  float: right;
+  padding-top: 5%;
+  padding-bottom: 20%;
+  text-align: center;
+}
+
+/*#welcome-area {
+  background-color: #c5d5cb;
+  border-radius: 20%;
+}*/
+
+#mini-photo {
+  background-image: url("../../media/profile.jpg");
+  background-size: 100%;
+  border: 10px solid #c5d5cb;
+  border-radius: 50%; 
+  box-shadow: 0px 0px 0px 2px #9fa8a3;
+  clear: both;
+  height: 15vw;
+  margin: 0 auto;
+  width: 15vw;
+}
+
+.read-more {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+
+/* ABOUT ME AND CONTACT PAGES */
+
+#about-me-text {
+  display: inline-block;
+  margin-left: 3vw;
+  margin-top: 5vw;
+  text-align: justify;
+  vertical-align: top;
+  width: 30vw;
+}
+
+#contact-greeting {
+  padding: 5%;
+  padding-top: 0%;
+  position: relative;
+}
+
+#profile-full {
+  border: 1px solid black;
+  border-radius: 10%;
+  height: 40vw;
+  position: relative;
+  top: 0;
+  width: 30vw;
+}
+
 /* ARTICLES */
 
 #article {
   margin: 5%;
+  position: relative;
 }
 
 img {
@@ -77,20 +208,21 @@ img {
   margin-top: 3%;
 }
 
-/* ARTICLE PREVIEWS (index.html and browse.html)*/
+/* ARTICLE PREVIEWS (index.html and browse.html) */
+
+.thumbnail {
+  background-color: #9fa8a3;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 5%;
+  padding-top: 2%;
+  position: relative;
+  width: 65vw;
+}
 
 #preview-img {
   border: 1px solid black;
   width: 20vw;
-}
-
-.thumbnail {
-  background-color: #9fa8a3;
-  padding: 5%;
-  padding-top: 2%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 65vw;
 }
 
 .summary-spacing {
@@ -107,102 +239,15 @@ img {
 }
 
 .text-half {
-  float: right;
   display: inline-block;
+  float: right;
   margin-right: 5%;
   width: 30vw;
 }
 
-/* HEADER: BLOG NAME AND NAV BAR */
-
-#blog-name {
-  background-image: url("../../media/header.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  display: block;
-  font-family: 'Poiret One', cursive;
-  font-weight: bold;
-  font-size: 20pt;
-  height: 10vw;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#menu-bar {
-  background-color: #c5d5cb;
-  border: 1px solid black;
-  font-family: 'Poiret One', cursive;
-  font-size: 16pt;
-  font-weight: bold;
-  margin: auto;
-}
-
-/* FOOTER */
-
-.footer {
-  bottom: 0;
-  clear: both;
-  display: block;
-  padding: 1%;
-  text-align: center;
-  width: 100%;
-}
-
-/* RIGHT SIDEBAR */
-
-#right-sidebar {
-  display: inline-block;
-  float: right;
-  padding: 3%;
-  width: 25vw;
-}
-
-#mini-photo {
-  background-image: url("../../media/profile.jpg");
-  background-size: 100%;
-  border: 1px solid black;
-  border-radius: 50%; 
-  clear: both;
-  height: 12vw;
-  margin: 0 auto;
-  width: 12vw;
-}
-
-.read-more {
-  display: block;
-  text-align: right;
-  width: 100%;
-}
-
-/* ABOUT ME AND CONTACT PAGES */
-
-#about-me-text {
-  display: inline-block;
-  margin-left: 3vw;
-  margin-top: 5vw;
-  text-align: justify;
-  vertical-align: top;
-  width: 30vw;
-}
-
-#contact-greeting {
-  padding: 5%;
-  padding-top: 0%
-}
-
-#profile-full {
-  border: 1px solid black;
-  border-radius: 10%;
-  height: 40vw;
-  width: 30vw;
-  position: relative;
-  top: 0;
-}
-
-/* 404 AND 500 ERROR PAGES */
+/* ERROR PAGES */
 
 .error {
-  position: absolute;
   margin-left: auto ;
   margin-right: auto ;
   text-align: center;

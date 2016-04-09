@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
-from django.template import RequestContext, Context
-from django.http import HttpResponse, Http404
+from django.template import RequestContext
 from .models import Article, Comment, Tag, Image
-# for the contact page email form:
-from .forms import ContactForm, SubscribeForm, CommentForm
+# for the forms:
+from .forms import ContactForm, CommentForm
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.contrib import messages
@@ -34,27 +33,6 @@ def article(request, article_id):
     'comment_form': comment_form_class, 
   })
 
-# This is for the subscription form on the sidebar
-# def base(request):
-  # form_class = SubscribeForm
-  # if request.method == 'POST':
-  #   form = form_class(data=request.POST)
-  #   if form.is_valid():
-  #     contact_email = request.POST.get('contact_email', '')
-  #     template = get_template('main/subscription_request_template.txt')
-  #     context = Context({'contact_email': contact_email})
-  #     content = template.render(context)
-  #     email = EmailMessage(
-  #       "New subscription request",
-  #       content,
-  #       "Jenn's Little Island Blog" +'',
-  #       ['jennifertigner@gmail.com']
-  #     )
-  #     email.send()
-  # return render(request, 'main/base.html', {
-  #   'form': form_class
-  # })
-
 def browse(request, tag_word):
   tags = get_list_or_404(Tag)
   tag = get_object_or_404(Tag, tag_text=tag_word)
@@ -79,11 +57,11 @@ def contact(request):
       contact_email = request.POST.get('contact_email', '')
       form_content = request.POST.get('content', '')
       template = get_template('contact/contact_email_template.txt')
-      context = Context({
+      context = {
         'contact_name': contact_name,
         'contact_email': contact_email,
         'form_content': form_content,
-      })
+      }
       content = template.render(context)
       # Email the profile with the contact information
       email = EmailMessage(
@@ -112,6 +90,20 @@ def index(request):
     'all_comments': all_comments, 
     'all_images': all_images
   })
+
+def search(request):
+    tags = get_list_or_404(Tag)
+    query = request.GET.get('q')
+    all_articles = get_list_or_404(Article)
+    all_comments = Comment.objects.all()
+    all_images = Image.objects.all()
+    return render(request, 'search/search_results.html', {
+      'tags': tags,
+      'query': query, 
+      'all_articles': all_articles,
+      'all_comments': all_comments, 
+      'all_images': all_images
+    })
 
 # ERRORS:
 
