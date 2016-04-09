@@ -15,4 +15,4 @@ ENV/
 ### Other ###
 .DS_Store
 notes.txt
-migrations/
+blog/migrations/
