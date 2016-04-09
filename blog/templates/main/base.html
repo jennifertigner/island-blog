@@ -45,6 +45,18 @@
 
       <!-- MAIN AREA OF WEBSITE: ONLY THIS AREA WILL CHANGE FROM PAGE-TO-PAGE -->
       <div id="main-area">
+      
+        <!-- messages that appear on submission of forms -->
+        {% if messages %}
+          {% for message in messages %}
+            <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <!-- pages are injected here -->
         {% block content %}
         {% endblock %}
       </div>
@@ -67,7 +79,7 @@
             <p>Welcome to Vancouver Island!<br><span class="read-more"><a href="{% url 'about' %}">Read More ></a></span></p>
           </div>
         </div>
-
+    
         <!-- subscribe to my blog -->
         <div id="subscribe-area">
           <p>Love my blog? Subscribe below to receive regular posts!</p>

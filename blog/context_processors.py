@@ -32,7 +32,7 @@ def subscribe_form(request):
       [contact_email]
     )
     email_to_subscriber.send()
-    messages.add_message(request, messages.INFO, 'Thanks for subscribing!')
+    message = messages.add_message(request, messages.SUCCESS, 'Thanks for subscribing!')
   return {
    'subscribe_form': SubscribeForm()
   }
