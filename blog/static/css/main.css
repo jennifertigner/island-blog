@@ -200,7 +200,8 @@ img {
   width: 15vw;
 }
 
-#add-comment {
+.add-comment {
+  cursor: pointer;
   font-style: italic;
   margin-left: 3%;
   margin-top: 3%;

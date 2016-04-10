@@ -26,7 +26,7 @@ class Comment(models.Model):
     return self.comment_text
 
   class Meta:
-    ordering = ['article', 'date_posted']
+    ordering = ['date_posted', 'article']
 
 class Tag(models.Model):
   tag_text = models.CharField(max_length=100)

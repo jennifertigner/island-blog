@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
+from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404, redirect
 from django.template import RequestContext
 from .models import Article, Comment, Tag, Image
 # for the forms:
@@ -8,23 +8,27 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 
 def about(request):
-  tags = get_list_or_404(Tag)
+  tags = Tag.objects.all()
   return render(request, 'about/about.html', {
     'tags': tags
   })
 
 def article(request, article_id):
-  tags = get_list_or_404(Tag)
-  article = get_object_or_404(Article, pk=article_id)
+  tags = Tag.objects.all()
+  try:
+    article = Article.objects.get(pk=article_id)
+  except Article.DoesNotExist:
+    return render_to_response('error/404.html')
   image = Image.objects.get(article=article_id)
   comments = Comment.objects.filter(article=article_id).order_by('-date_posted')
   comment_form_class = CommentForm
   if request.method == "POST":
     comment_form = comment_form_class(data=request.POST)
-    new_comment = comment_form.save(commit=False)
-    new_comment.article = article
-    new_comment.save()
-    messages.add_message(request, messages.INFO, 'Your comment has been added')
+    if comment_form.is_valid():
+      new_comment = comment_form.save(commit=False)
+      new_comment.article = article
+      new_comment.save()
+      messages.add_message(request, messages.INFO, 'Your comment has been added')
   return render(request, 'article/article.html', {
     'tags': tags,
     'article': article,  
@@ -34,8 +38,11 @@ def article(request, article_id):
   })
 
 def browse(request, tag_word):
-  tags = get_list_or_404(Tag)
-  tag = get_object_or_404(Tag, tag_text=tag_word)
+  tags = Tag.objects.all()
+  try:
+    tag = Tag.objects.get(tag_text=tag_word)
+  except Tag.DoesNotExist:
+    return render_to_response('error/404.html')
   article_list = tag.article_set.all()
   all_images = Image.objects.all()
   return render(request, 'browse/browse.html', {
@@ -46,7 +53,7 @@ def browse(request, tag_word):
   })
 
 def contact(request):
-  tags = get_list_or_404(Tag)
+  tags = Tag.objects.all()
   form_class = ContactForm
   if request.method == 'POST':
     form = form_class(data=request.POST)
@@ -80,7 +87,7 @@ def contact(request):
   })
 
 def index(request):
-  tags = get_list_or_404(Tag)
+  tags = Tag.objects.all()
   all_articles = get_list_or_404(Article)
   all_comments = Comment.objects.all()
   all_images = Image.objects.all()
@@ -92,7 +99,7 @@ def index(request):
   })
 
 def search(request):
-    tags = get_list_or_404(Tag)
+    tags = Tag.objects.all()
     query = request.GET.get('q')
     all_articles = get_list_or_404(Article)
     all_comments = Comment.objects.all()
@@ -107,26 +114,14 @@ def search(request):
 
 # ERRORS:
 
-def handler400(request):
-  response = render(request, 'error/400.html',
-  context_instance=RequestContext(request))
-  response.status_code = 400
-  return response
-
-def handler403(request):
-  response = render(request, 'error/403.html',
-  context_instance=RequestContext(request))
-  response.status_code = 403
-  return response
-
 def handler404(request):
-  response = render(request, 'error/404.html',
+  response = render_to_response('error/404.html', {}, 
   context_instance=RequestContext(request))
   response.status_code = 404
   return response
 
 def handler500(request):
-  response = render(request, 'error/500.html',
+  response = render_to_response('error/500.html', {}, 
   context_instance=RequestContext(request))
   response.status_code = 500
   return response

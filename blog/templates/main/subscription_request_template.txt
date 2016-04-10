@@ -1,3 +1,3 @@
 Jennifer, your blog is gaining friends!! Here's the latest subscriber (add them to the list). Keep up the good work :)
 
-Email: {{ contact_email }}
+Email: {{ subscribe_email }}

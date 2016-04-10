@@ -11,26 +11,23 @@
     {% csrf_token %}
 
     <!-- NAME -->
-    <div class="form-group row col-md-offset-2">
-      <label class="col-sm-2 form-control-label">Name</label>
+    <div class="form-group row col-md-offset-4">
       <div class="col-sm-6">{{ form.contact_name }}</div>
     </div>
 
     <!-- EMAIL -->
-    <div class="form-group row col-md-offset-2">
-      <label class="col-sm-2 form-control-label">Email Address</label>
+    <div class="form-group row col-md-offset-4">
       <div class="col-sm-6">{{ form.contact_email }}</div>
     </div>
 
     <!-- MESSAGE -->
-    <div class="form-group row col-md-offset-2">
-      <label class="col-sm-2 form-control-label">Message</label>
+    <div class="form-group row col-md-offset-4">
       <div class="col-sm-6">{{ form.content }}</div>
     </div> 
 
     <!-- SUBMIT BUTTON -->
-    <div class="form-group row col-md-offset-4">
-      <input class="col-sm-2 button btn-default" type="submit" value="Submit">
+    <div class="form-group row col-md-offset-6">
+      <input class="col-sm-3 button btn-default" type="submit" value="Submit">
     </div>
   </form>
 </div>

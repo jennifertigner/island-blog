@@ -2,23 +2,12 @@
 {% block content %}
 {% load markup_tags %}
 
-<!-- Alert to let the user know their comment was successfully posted -->
-{% if messages %}
-  {% for message in messages %}
-    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
-      <a class="close" data-dismiss="alert" href="#">&times;</a>
-      {{ message }}
-    </div>
-  {% endfor %}
-{% endif %}
-
 <div id="article">
   <h3>{{ article.title }}</h3>
   <p>{{ article.date_posted }}</p>
   <p>{{ article.article_text|apply_markup:"markdown" }}<br></p>
   <p><img src="{{ image.filepath.url }}" alt="{{ image.description }}"/></p>
 
-  <!-- HAVE SOCIAL SHARING ICONS HERE -->
   <p>Tags:
     {% for tag in article.tags.all %}
       <a href="/browse/{{ tag.tag_text }}">{{ tag.tag_text }}</a> ~
@@ -43,26 +32,23 @@
     </div>
   {% endfor %}
 
-  <div id="add-comment"><p>Click here to add a comment</p></div>
+  <div class="add-comment"><p>Click here to add a comment</p></div>
   <div id="comment-form" style="display:none">
     <form role="form" action="" method="post">
       {% csrf_token %}
 
       <!-- NAME -->
       <div class="form-group row col-md-offset-2">
-        <label class="col-sm-2 form-control-label">Name</label>
         <div class="col-sm-6">{{ comment_form.name }}</div>
       </div>
 
       <!-- EMAIL -->
       <div class="form-group row col-md-offset-2">
-        <label class="col-sm-2 form-control-label">Email Address</label>
         <div class="col-sm-6">{{ comment_form.email }}</div>
       </div>
 
       <!-- MESSAGE -->
       <div class="form-group row col-md-offset-2">
-        <label class="col-sm-2 form-control-label">Message</label>
         <div class="col-sm-6">{{ comment_form.comment_text }}</div>
       </div> 
 
@@ -75,10 +61,11 @@
 </div>
 
 <script>
-
-  $("#add-comment").click(function(){
+  $(".add-comment").click(function(){
       $("#comment-form").toggle("slow");
   });
+
+  $(".add-comment")
 
   $('.name-hover').hover(function(){
     $(this).next(".email-hover").fadeIn();

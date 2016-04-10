@@ -1,18 +1,9 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import include, url, handler404, handler500
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import RedirectView
 from . import views
-
-# from django.conf.urls import (
-#     handler400, handler403, handler404, handler500
-# )
-
-# handler400 = 'views.handler400'
-# handler403 = 'views.handler403'
-# handler404 = 'views.handler404'
-# handler500 = 'views.handler500'
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),  
@@ -30,8 +21,6 @@ urlpatterns = [
   url(r'^about/$', views.about, name='about'), 
   url(r'^contact/$', views.contact, name='contact'),
   # error pages
-  url(r'400/$', views.handler400),
-  url(r'403/$', views.handler403), 
   url(r'404/$', views.handler404),
   url(r'500/$', views.handler500),     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
