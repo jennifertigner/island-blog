@@ -1,4 +1,4 @@
-Django==1.11.29
+Django==2.2.24
 six==1.10.0
 Pillow==8.1.1
 django_cleanup==0.4.2
